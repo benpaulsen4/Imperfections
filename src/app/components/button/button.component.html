@@ -1,0 +1,5 @@
+@if (!!anchorReference){
+    <a [href]="anchorReference" (click)="click.emit()">{{ text }}</a>
+} @else {
+    <button (click)="click.emit()">{{ text }}</button>
+}
