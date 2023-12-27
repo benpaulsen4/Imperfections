@@ -1,7 +1,7 @@
 <div class="card-holder">
-    <app-character-card />
-    <app-character-card />
-    <app-character-card />
+    <app-character-card [character]="character1" [flag]="flag1" />
+    <app-character-card [character]="character2" [flag]="flag2" />
+    <app-character-card [character]="character3" [flag]="flag3" />
 </div>
 
-<app-button text="Next round" />
+<app-button text="Next round" (click)="onNextRound()" />

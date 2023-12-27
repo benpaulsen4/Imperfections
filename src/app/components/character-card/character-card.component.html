@@ -1,6 +1,6 @@
-<div class="red-flag">🚩 Here is the content of the selected red flag</div>
+<div class="red-flag">🚩 {{ flag | async }}</div>
 
 <div class="character">
-    <img src="https://thispersondoesnotexist.com" />
-    <p>Character name <span>Character franchise</span></p>
+    <img [src]="(character | async)?.imgUrl ?? 'assets/no-image.png'" />
+    <p> {{ (character | async)?.name }} <span> {{ (character | async)?.franchise }} </span></p>
 </div>
