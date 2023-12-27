@@ -3,7 +3,7 @@ import { CharacterCardComponent } from "../character-card/character-card.compone
 import { ButtonComponent } from "../button/button.component";
 import { DataSource, DataSourceToken } from '../../services/data-source.interface';
 import { MockDataSourceService } from '../../services/mock-data-source.service';
-import { BehaviorSubject, from, takeUntil } from 'rxjs';
+import { BehaviorSubject, timer } from 'rxjs';
 import { Character } from '../../models/character';
 
 @Component({
@@ -30,18 +30,29 @@ export class PlayComponent implements OnInit{
     }
 
     onNextRound(){
+        this.nullifyOldValues();
         this.getNewOptions();
     }
 
     private getNewOptions(){
         const [char1, char2, char3] = this.dataSource.getThreeCharacters();
         const [flag1, flag2, flag3] = this.dataSource.getThreeFlags();
-        this.character1.next(char1);
-        this.character2.next(char2);
-        this.character3.next(char3);
+        timer(500).subscribe(() => this.character1.next(char1));
+        timer(1000).subscribe(() => this.character2.next(char2));
+        timer(1500).subscribe(() => this.character3.next(char3));
 
-        this.flag1.next(flag1);
-        this.flag2.next(flag2);
-        this.flag3.next(flag3);
+        timer(3500).subscribe(() => this.flag1.next(flag1));
+        timer(4000).subscribe(() => this.flag2.next(flag2));
+        timer(4500).subscribe(() => this.flag3.next(flag3));
+    }
+
+    private nullifyOldValues(){
+        this.character1.next(null);
+        this.character2.next(null);
+        this.character3.next(null);
+
+        this.flag1.next(null);
+        this.flag2.next(null);
+        this.flag3.next(null);
     }
 }

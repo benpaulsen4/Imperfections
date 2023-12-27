@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     width: 350px;
-    gap: 12px
+    gap: 12px;
+    justify-content: space-between;
 }
 
 .red-flag {
@@ -10,13 +11,28 @@
     color: #fff;
     background-color: #b91313;
     border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+
+    animation: card-in 500ms linear
+}
+
+.placeholder-flag {
+    height: 2rem;
+    padding: 11px;
+}
+
+.placeholder-character {
+    height: 405px;
 }
 
 .character {
     border-radius: 4px;
     background-color: #fff;
     p {
-        padding: 0 8px;
+        padding: 0 12px;
         font-weight: bold;
         span {
             font-weight: normal;
@@ -31,5 +47,18 @@
         object-fit: cover;
         border-top-right-radius: 4px;
         border-top-left-radius: 4px;
+    }
+
+    animation: card-in 500ms linear;
+}
+
+@keyframes card-in {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: none;
+        opacity: 100;
     }
 }

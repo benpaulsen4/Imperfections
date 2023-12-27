@@ -1,6 +1,14 @@
-<div class="red-flag">🚩 {{ flag | async }}</div>
+@if ((flag | async) === null) {
+    <div class="placeholder-flag"></div>
+} @else {
+    <div class="red-flag"><span>🚩</span> {{ flag | async }}</div>
+}
 
-<div class="character">
-    <img [src]="(character | async)?.imgUrl ?? 'assets/no-image.png'" />
-    <p> {{ (character | async)?.name }} <span> {{ (character | async)?.franchise }} </span></p>
-</div>
+@if ((character | async) === null) {
+    <div class="placeholder-character"></div>
+} @else {
+    <div class="character">
+        <img [src]="(character | async)?.imgUrl ?? 'assets/no-image.png'" />
+        <p> {{ (character | async)?.name }} <span> {{ (character | async)?.franchise }} </span></p>
+    </div>
+}
