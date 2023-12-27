@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataSource } from './data-source.interface';
 import { Character } from '../models/character';
+import { RandomUtils } from './utils/random-utils';
 
 @Injectable()
 export class MockDataSourceService implements DataSource {
@@ -76,24 +77,10 @@ export class MockDataSourceService implements DataSource {
   }
 
   getThreeCharacters(): Character[] {
-    return this.getXUniqueRandom(this.testCharacters, 3);
+    return RandomUtils.getXUniqueRandom(this.testCharacters, 3);
   }
 
   getThreeFlags(): string[] {
-    return this.getXUniqueRandom(this.testFlags, 3);
-  }
-
-  private getXUniqueRandom<T>(options: T[], x: number): T[]{
-    const values: T[] = []
-    const usedIndices: number[] = []
-    for (let i = 0; i < x; i++){
-      let index = Math.floor(Math.random() * options.length);
-      while (usedIndices.includes(index)) index = Math.floor(Math.random() * options.length);
-
-      usedIndices.push(index);
-      values.push(options[index]);
-    }
-
-    return values;
+    return RandomUtils.getXUniqueRandom(this.testFlags, 3);
   }
 }
