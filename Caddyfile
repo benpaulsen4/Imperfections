@@ -24,7 +24,7 @@
 	rewrite /health /*
 
 	# serve from the set folder
-	root * {$ANGULAR_OUTPUT_PATH}
+	root * dist
 
 	# enable gzipping responses
 	encode gzip
