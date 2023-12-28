@@ -1,14 +1,36 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent, RouterOutlet } from '@angular/router';
+import { ErrorComponent } from "./components/error/error.component";
+import { LoaderComponent } from "./components/loader/loader.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [CommonModule, RouterOutlet, ErrorComponent, LoaderComponent]
 })
 export class AppComponent {
-  title = 'imperfections';
+  error?: string;
+  isLoading = true;
+
+  constructor(private router: Router){
+    router.events.subscribe((event) => {
+      this.navigationInterceptor(event as RouterEvent)
+    })
+  }
+
+  onGoHome(){
+    this.router.navigate([""])
+  }
+
+  private navigationInterceptor(event: RouterEvent){
+    if (event instanceof NavigationError){
+      this.error = event.error.message;
+      this.isLoading = false;
+    } else if (event instanceof NavigationEnd){
+      this.isLoading = false
+    }
+  }
 }

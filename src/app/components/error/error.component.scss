@@ -2,15 +2,13 @@
 
 :host{
     @include flex-stack-layout;
-    color: #fff
-}
-
-p {
-    max-width: 500px;
-    margin-bottom: 32px;
-    text-align: center;
+    color: #fff;
 }
 
 h1 {
     font-size: 5rem;
+}
+
+p {
+    font-size: 2rem;
 }

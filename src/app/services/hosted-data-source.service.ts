@@ -15,12 +15,17 @@ export class HostedDataSourceService implements DataSource {
     private characters = new BehaviorSubject<Character[]>([]);
 
     async cacheData(): Promise<void> {
+        //If the data is already cached return
+        if (this.redFlags.getValue().length > 0 && this.characters.getValue().length > 0) return;
+
         const tasks = [
             fetch(environment.hostedDataSourceBaseUrl + this.redFlagsFileName),
             fetch(environment.hostedDataSourceBaseUrl + this.charactersFileName)
         ]
 
         const responses = await Promise.all(tasks);
+
+        if (!!responses.find(res => res.status > 300)) throw new Error('Data fetch failed')
 
         this.redFlags.next(await responses[0].json())
 

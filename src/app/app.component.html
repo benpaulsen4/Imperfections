@@ -1,4 +1,11 @@
 <nav>
-  <h1>Imperfections 💔</h1>
+  <h1 (click)="onGoHome()" >Imperfections 💔</h1>
 </nav>
-<router-outlet></router-outlet>
+
+@if (isLoading){
+  <app-loader />
+} @else if (!!error) {
+  <app-error [errorMessage]="error" />
+} @else {
+  <router-outlet />
+}
