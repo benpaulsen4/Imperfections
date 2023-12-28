@@ -77,10 +77,10 @@ export class MockDataSourceService implements DataSource {
   }
 
   getThreeCharacters(): Character[] {
-    return RandomUtils.getXUniqueRandom(this.testCharacters, 3);
+    return RandomUtils.getFreshRandom(this.testCharacters, 3);
   }
 
   getThreeFlags(): string[] {
-    return RandomUtils.getXUniqueRandom(this.testFlags, 3);
+    return RandomUtils.getFreshRandom(this.testFlags, 3);
   }
 }

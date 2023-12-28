@@ -14,6 +14,9 @@ export class HostedDataSourceService implements DataSource {
     private redFlags = new BehaviorSubject<string[]>([]);
     private characters = new BehaviorSubject<Character[]>([]);
 
+    private usedFlags = new Set<number>();
+    private usedCharacters = new Set<number>();
+
     async cacheData(): Promise<void> {
         //If the data is already cached return
         if (this.redFlags.getValue().length > 0 && this.characters.getValue().length > 0) return;
@@ -46,13 +49,13 @@ export class HostedDataSourceService implements DataSource {
         const cachedCharacters = this.characters.getValue();
         if (cachedCharacters.length === 0) throw new Error("Character set not initialized")
 
-        return RandomUtils.getXUniqueRandom(cachedCharacters, 3);
+        return RandomUtils.getFreshRandom(cachedCharacters, 3, this.usedCharacters);
     }
 
     getThreeFlags(): string[] {
         const cachedFlags = this.redFlags.getValue();
         if (cachedFlags.length === 0) throw new Error("Red flag set not initialized")
 
-        return RandomUtils.getXUniqueRandom(cachedFlags, 3);
+        return RandomUtils.getFreshRandom(cachedFlags, 3, this.usedFlags);
     }
 }
