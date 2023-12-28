@@ -30,7 +30,7 @@ describe('ButtonComponent', () => {
 
   it('should emit click event when button is clicked', () => {
     const spy = jasmine.createSpy();
-    component.click.subscribe(spy);
+    component.buttonClicked.subscribe(spy);
     fixture.detectChanges();
     const button = fixture.nativeElement.querySelector('button');
     button.click();

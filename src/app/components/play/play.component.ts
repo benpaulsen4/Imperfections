@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, signal } from '@angular/core';
 import { CharacterCardComponent } from "../character-card/character-card.component";
 import { ButtonComponent } from "../button/button.component";
 import { DataSource, DataSourceToken } from '../../services/data-source.interface';
-import { MockDataSourceService } from '../../services/mock-data-source.service';
 import { BehaviorSubject, timer } from 'rxjs';
 import { Character } from '../../models/character';
 
@@ -11,8 +10,7 @@ import { Character } from '../../models/character';
     standalone: true,
     templateUrl: './play.component.html',
     styleUrl: './play.component.scss',
-    imports: [CharacterCardComponent, ButtonComponent],
-    providers: [{provide: DataSourceToken, useClass: MockDataSourceService}]
+    imports: [CharacterCardComponent, ButtonComponent]
 })
 export class PlayComponent implements OnInit{
     character1 = new BehaviorSubject<Character | null>(null);

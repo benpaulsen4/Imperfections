@@ -15,6 +15,6 @@ anchorReference?: string;
 text!: string;
 
 @Output()
-click = new EventEmitter<void>();
+buttonClicked = new EventEmitter<void>();
 
 }
