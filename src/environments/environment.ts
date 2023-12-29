@@ -1,3 +1,3 @@
 export const environment = {
-    hostedDataSourceBaseUrl: "https://imperfections-store.up.railway.app/"
+  hostedDataSourceBaseUrl: 'https://imperfections-store.up.railway.app/',
 };

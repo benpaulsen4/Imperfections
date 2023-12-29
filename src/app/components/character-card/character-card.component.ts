@@ -8,12 +8,12 @@ import { AsyncPipe } from '@angular/common';
   standalone: true,
   imports: [AsyncPipe],
   templateUrl: './character-card.component.html',
-  styleUrl: './character-card.component.scss'
+  styleUrl: './character-card.component.scss',
 })
 export class CharacterCardComponent {
-@Input()
-character!: Observable<Character | null>
+  @Input()
+  character!: Observable<Character | null>;
 
-@Input()
-flag!: Observable<string | null>
+  @Input()
+  flag!: Observable<string | null>;
 }

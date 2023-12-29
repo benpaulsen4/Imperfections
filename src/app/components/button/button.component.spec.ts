@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ButtonComponent } from './button.component';
 
 describe('ButtonComponent', () => {
@@ -8,10 +7,9 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonComponent]
-    })
-    .compileComponents();
-    
+      imports: [ButtonComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -25,7 +23,9 @@ describe('ButtonComponent', () => {
     const text = 'Click me!';
     component.text = text;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('button').textContent).toContain(text);
+    expect(fixture.nativeElement.querySelector('button').textContent).toContain(
+      text,
+    );
   });
 
   it('should emit click event when button is clicked', () => {

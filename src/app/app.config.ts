@@ -5,5 +5,8 @@ import { DataSourceToken } from './services/data-source.interface';
 import { HostedDataSourceService } from './services/hosted-data-source.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), {provide: DataSourceToken, useClass: HostedDataSourceService}]
+  providers: [
+    provideRouter(routes),
+    { provide: DataSourceToken, useClass: HostedDataSourceService },
+  ],
 };

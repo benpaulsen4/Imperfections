@@ -1,14 +1,15 @@
-:host:has(a){
-    margin: 8px 0
+:host:has(a) {
+  margin: 8px 0;
 }
 
-a, button {
-    padding: 12px;
-    border-radius: 6px;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    background-color: #b91313;
-    text-decoration: none;
-    cursor: pointer;
+a,
+button {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  background-color: #b91313;
+  text-decoration: none;
+  cursor: pointer;
 }

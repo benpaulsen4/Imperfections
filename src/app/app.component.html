@@ -1,8 +1,8 @@
 <nav>
-  <h1 (click)="onGoHome()" >Imperfections 💔</h1>
+  <h1 (click)="onGoHome()">Imperfections 💔</h1>
 </nav>
 
-@if (isLoading){
+@if (isLoading) {
   <app-loader />
 } @else if (!!error) {
   <app-error [errorMessage]="error" />
