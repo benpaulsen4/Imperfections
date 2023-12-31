@@ -1,27 +1,27 @@
 # Imperfections
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+This simple game written in Angular aims to replicate the 1980s boardgame 'Heartthrob' with a modern pop-culture twist!
 
-## Development server
+## Note about Content
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The content for the game (characters and red flags) is not open sourced for licensing reasons. When spinning up your own version of the game, you can easily add your own content by replicating the behavior of my server through `HostedDataSourceService`.
 
-## Code scaffolding
+Your server should contain:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- A `red-flags.json` file - an array of strings each containing a red flag
+- A `characters.json` file - an array of `Character` objects
+- An `images/` directory - for storing images referenced in the `characters.json` manifest
 
-## Build
+Note that if you don't include an `imageUrl` in a particular character object, a generic image will be used in its place. You must always provide a name and franchise however.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Potential improvements
 
-## Running unit tests
+I'm not sure I'll ever do any of these, but here are some ideas:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Character set filtering
+  - Allow users to select which franchises they want included in their character deck rather than always using the whole deck
+- Other genders
+  - Add a filter for feminine/masculine characters and add a classification of each to `Character` to allow users to play with non-male characters
+- Submission portal
+  - Allow users to submit their own character/red flag suggestions
+  - Could do this in a really fancy way with automatic screening for problematic content and unattended alterations of the dataset
